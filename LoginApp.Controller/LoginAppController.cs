@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using LoginApp.Model;
+using System.Data;
 
 namespace LoginApp.Controller
 {
@@ -18,6 +19,11 @@ namespace LoginApp.Controller
         public void getJSONData()
         {
             repo.getJSONData();
+        }
+
+        public DataTable getDataTable()
+        {
+            return repo.getDataTableFromJSON();
         }
 
     }

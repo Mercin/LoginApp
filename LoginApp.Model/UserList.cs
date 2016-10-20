@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace LoginApp.Model
 {
-    public class UserList
+    public class UserList 
     {
         [JsonProperty("loginModel")]
-        public List<User> _users { get; set; }
+        public List<User> Users { get; set; }
 
     }
 }

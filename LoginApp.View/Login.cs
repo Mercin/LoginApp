@@ -17,7 +17,9 @@ namespace LoginApp
         {
             InitializeComponent();
             IController controller = new LoginAppController();
-            controller.getJSONData();
+            dataGridView.DataSource = controller.getDataTable();
+
+
             
         }
     }
