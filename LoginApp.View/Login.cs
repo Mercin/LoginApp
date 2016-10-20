@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginApp.Controller;
 
 namespace LoginApp
 {
@@ -15,6 +16,9 @@ namespace LoginApp
         public Login()
         {
             InitializeComponent();
+            IController controller = new LoginAppController();
+            controller.getJSONData();
+            
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LoginApp.Model;
 
 namespace LoginApp
 {
@@ -18,10 +17,8 @@ namespace LoginApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            IUserRepository repo = new UserRepository();
-            repo.getJSONData();
-
             Application.Run(new Login());
+
         }
     }
 }

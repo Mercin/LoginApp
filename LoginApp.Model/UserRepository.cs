@@ -15,8 +15,7 @@ namespace LoginApp.Model
         public void getJSONData()
         {
             string path = Path.Combine(Environment.CurrentDirectory, @"Resources\Zadatak_1.json");
-            var kajgod = File.ReadAllText(path);
-            _users = JsonConvert.DeserializeObject<UserList>(kajgod);
+            _users = JsonConvert.DeserializeObject<UserList>(File.ReadAllText(path));
         }
     }
 }
