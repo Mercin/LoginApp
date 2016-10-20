@@ -9,6 +9,5 @@ namespace LoginApp.Controller
     public interface IController
     {
         void getJSONData();
-        bool validatePassword(string _password);
     }
 }

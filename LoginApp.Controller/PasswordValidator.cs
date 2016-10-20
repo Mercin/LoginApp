@@ -9,18 +9,24 @@ namespace LoginApp.Controller
 {
     public class PasswordValidator
     {
-        public bool validatePassword(string _password)
+        public string getHash(string _password)
         {
             MD5 md5 = System.Security.Cryptography.MD5.Create();
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(_password);
             byte[] hash = md5.ComputeHash(inputBytes);
 
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append(BitConverter.ToString(hash).Replace("-", string.Empty));
-
-            Console.Out.WriteLine(sb.ToString());
-            return false;
+            return BitConverter.ToString(hash).Replace("-", string.Empty);
+        }
+        public bool validatePassword(string _password, string _hash)
+        {
+            if (_password.Equals(_hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
