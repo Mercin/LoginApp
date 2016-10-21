@@ -9,9 +9,9 @@ namespace LoginApp.Model
 {
     public interface IUserRepository
     {
-        void getJSONData();
         List<User> getUserList();
         DataTable getDataTableFromJSON();
+        string getHashByID(int id);
 
     }
 }

@@ -24,10 +24,6 @@ namespace LoginApp.Model
             UserList _users = JsonConvert.DeserializeObject<UserList>(File.ReadAllText(path));
             userList = _users.Users;
         }
-        public void getJSONData()
-        {
-
-        }
 
         public List<User> getUserList()
         {
@@ -41,27 +37,45 @@ namespace LoginApp.Model
             dt.Columns.Add(new DataColumn("Avatar", typeof(System.Drawing.Bitmap)));
             dt.Columns.Add("Name");
             dt.Columns.Add("Role");
+            dt.Columns.Add("Id");
             foreach (var item in userList)
             {
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(item.avatarUrl);
                 myRequest.Method = "GET";
                 Bitmap bmp = null;
+                Bitmap resized = null;
                 try
                 {
                     HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse();
                     bmp = new Bitmap(myResponse.GetResponseStream());
+                    resized = new Bitmap(bmp, new Size(200, 200));
                     myResponse.Close();
                 }
                 catch(Exception e)
                 {
-
+                    string filePath = Environment.CurrentDirectory + @"\Resources\Anon.png";
+                    bmp = new Bitmap(filePath);
+                    resized = new Bitmap(bmp, new Size(200, 200));
                 }
 
                 
-                dt.Rows.Add(bmp, item.name, item.role);
+                dt.Rows.Add(resized, item.name, item.role, item.id);
             }
 
             return dt;
+        }
+
+        public string getHashByID(int id)
+        {
+            foreach(var item in userList)
+            {
+                if (id == Int16.Parse(item.id))
+                {
+                    return item.passHash;
+                }
+            }
+
+            return "";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginApp.Controller;
 
 namespace LoginApp
 {
@@ -17,7 +18,9 @@ namespace LoginApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Login());
+            IController controller = new LoginAppController();
+
+            Application.Run(new Login(controller));
 
         }
     }

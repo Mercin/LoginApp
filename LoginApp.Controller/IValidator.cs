@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LoginApp.Controller
 {
-    public interface IController
+    public interface IValidator
     {
-
-        DataTable getDataTable();
-        bool validatePassword(int id, string pass);
+        string getHash(string _password);
+        bool validatePassword(string _password, string _hash);
 
     }
 }

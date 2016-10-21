@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LoginApp.Controller
 {
-    public class PasswordValidator
+    public class PasswordValidator : IValidator
     {
         public string getHash(string _password)
         {

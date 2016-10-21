@@ -16,15 +16,22 @@ namespace LoginApp.Controller
         {
             repo = new UserRepository();
         }
-        public void getJSONData()
-        {
-            repo.getJSONData();
-        }
 
         public DataTable getDataTable()
         {
             return repo.getDataTableFromJSON();
         }
+
+        public bool validatePassword(int id, string pass)
+        {
+            string hash =  repo.getHashByID(id);
+
+            IValidator pv = new PasswordValidator();
+            string inputPassHash = pv.getHash(pass);
+            return pv.validatePassword(hash, inputPassHash);
+
+        }
+
 
     }
 }
