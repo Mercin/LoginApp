@@ -11,6 +11,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Reflection;
 
 namespace LoginApp.Model
 {
@@ -20,7 +21,7 @@ namespace LoginApp.Model
 
         public UserRepository()
         {
-            string path = Path.Combine(Environment.CurrentDirectory, @"Resources\Zadatak_1.json");
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\Zadatak_1.json");
             UserList _users = JsonConvert.DeserializeObject<UserList>(File.ReadAllText(path));
             userList = _users.Users;
         }
@@ -53,7 +54,7 @@ namespace LoginApp.Model
                 }
                 catch(Exception e)
                 {
-                    string filePath = Environment.CurrentDirectory + @"\Resources\Anon.png";
+                    string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Resources\Anon.png";
                     bmp = new Bitmap(filePath);
                     resized = new Bitmap(bmp, new Size(200, 200));
                 }
